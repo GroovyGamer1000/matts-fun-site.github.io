@@ -1,5 +1,8 @@
 body {
-  background-color: white;
+  /* Remove background-color and replace with gradient */
+  background: linear-gradient(to bottom, yellow, orange);
   color: black;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
+  margin: 0;  /* optional: remove default margins so gradient fills entire viewport */
+  padding: 0; /* optional */
 }
