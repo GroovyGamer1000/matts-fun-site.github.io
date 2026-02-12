@@ -7,6 +7,6 @@ html, body {
 body {
   background: linear-gradient(to bottom, yellow, orange);
   color: black;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: casual;
   min-height: 100vh;        /* Ensure body is at least full viewport height */
 }
