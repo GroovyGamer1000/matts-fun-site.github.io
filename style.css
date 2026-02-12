@@ -7,6 +7,6 @@ html, body {
 body {
   background: linear-gradient(to bottom, yellow, orange);
   color: black;
-  font-family: casual;
+  font-family: 'Verdana';
   min-height: 100vh;        /* Ensure body is at least full viewport height */
 }
