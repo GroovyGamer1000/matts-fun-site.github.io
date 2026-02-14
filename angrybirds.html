@@ -18,15 +18,7 @@
   <h1>Angry Birds</h1>
   <p>Here, you'll find all the fun games you'll like to play!</p>
 
-  <div style="text-align: center; margin-top: 20px;">
-  <button onclick="openFullscreenTab()" 
-          style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
-      Open Fullscreen
-    </button>
-  </div>
-
-  
-  <!-- Centered Game Section -->
+  <!-- Centered Game Section (like videos page) -->
   <div style="display: flex; justify-content: center; margin-top: 20px;">
     
     <div style="text-align: center;">
@@ -56,55 +48,6 @@
       player.load("assets/angry-birds.swf");
     });
   </script>
-
-  <script>
-function openFullscreenTab() {
-  const newWindow = window.open("", "_blank");
-
-  newWindow.document.write(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Angry Birds HD</title>
-      <meta charset="UTF-8">
-      <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-      <style>
-        html, body {
-          margin: 0;
-          padding: 0;
-          height: 100%;
-          background: black;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      </style>
-    </head>
-    <body>
-      <div id="ruffle-container"></div>
-
-      <script>
-        window.addEventListener("DOMContentLoaded", function () {
-          const ruffle = window.RufflePlayer?.newest();
-          const player = ruffle.createPlayer();
-
-          const container = document.getElementById("ruffle-container");
-          container.appendChild(player);
-
-          player.style.width = "100vw";
-          player.style.height = "100vh";
-
-          player.load("assets/angry-birds.swf");
-        });
-      <\/script>
-    </body>
-    </html>
-  `);
-
-  newWindow.document.close();
-}
-</script>
-
 
 </body>
 </html>
