@@ -5,11 +5,11 @@
   <title>Angry Birds</title>
   <link rel="stylesheet" href="style.css">
   <script>
-    // Global Ruffle config: exactFit scaling and autoplay
+    // Global Ruffle config: forceScale to prevent SWF from changing scale, autoplay
     window.RufflePlayer = window.RufflePlayer || {};
     window.RufflePlayer.config = {
-      scale: "exactFit",  // make the game stretch to container
-      autoplay: "on"      // automatically start playing
+      forceScale: "exactFit",  // force the SWF to exactFit regardless of internal scale
+      autoplay: "on"           // automatically start playing
     };
   </script>
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
@@ -45,7 +45,7 @@
   </div>
 
   <script>
-    // Function to create the Ruffle player with exactFit and autoplay
+    // Function to create the Ruffle player with forceScale and autoplay
     function loadRuffle(containerId, swfPath, width = "800px", height = "600px") {
       const ruffle = window.RufflePlayer?.newest();
       const player = ruffle.createPlayer();
@@ -77,10 +77,10 @@
       const ruffleScript = newWindow.document.createElement("script");
       ruffleScript.src = "https://unpkg.com/@ruffle-rs/ruffle";
       ruffleScript.onload = () => {
-        // Apply exactFit and autoplay in the new tab as well
+        // Apply forceScale and autoplay in the new tab as well
         newWindow.RufflePlayer = newWindow.RufflePlayer || {};
         newWindow.RufflePlayer.config = {
-          scale: "exactFit",
+          forceScale: "exactFit",
           autoplay: "on"
         };
 
