@@ -9,10 +9,4 @@ body {
   color: black;
   font-family: 'Comic Sans MS';
   min-height: 100vh;
-
-  /* Center everything */
-  display: flex;
-  justify-content: center;  /* Horizontal center */
-  align-items: center;      /* Vertical center */
-  text-align: center;       /* Centers text inside elements */
 }
