@@ -10,35 +10,27 @@
     <meta charset="UTF-8">
     <title>Matt's Games!</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
   </head>
 
   <body>
     <h1>Matt's Games!</h1>
     <p>Here, you'll find all the fun games you'll like to play!</p>
 
-    <!-- Container for the game -->
-    <div id="container"></div>
-
-    <!-- Ruffle -->
-    <script src="https://archive.org/download/matts-fun-site/ruffle/ruffle.js"></script>
-
-    <!-- Your code -->
+    <!-- 2) Put this where you want the Flash content to appear -->
+    <div id="ruffle-container" style="width: 800px; height: 600px;"></div>
+    
+    <!-- 3) This JS creates the player and loads your SWF -->
     <script>
-      window.RufflePlayer = window.RufflePlayer || {};
-
-      window.addEventListener("DOMContentLoaded", () => {
-        const ruffle = window.RufflePlayer.newest();
+      window.addEventListener("DOMContentLoaded", function () {
+        const ruffle = window.RufflePlayer?.newest();
         const player = ruffle.createPlayer();
-
-        player.style.width = "800px";
-        player.style.height = "600px";
-
-        const container = document.getElementById("container");
+    
+        const container = document.getElementById("ruffle-container");
         container.appendChild(player);
-
-        player.ruffle().load(
-          "https://archive.org/download/iWubbzy/games/wubbzys-amazing-adventure/wplatform_main.swf"
-        );
+    
+        // Replace with your SWF URL
+        player.load("https://archive.org/download/iWubbzy/path/to/file.swf");
       });
     </script>
   </body>
