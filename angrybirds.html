@@ -43,6 +43,11 @@
         With colorful levels and creative challenges, it’s easy to play but hard to stop!
       </p>
 
+      <!-- Back to Games Button -->
+      <button id="back-to-games" style="margin-top: 15px; padding: 10px 20px; font-weight: bold;">
+        Back to Games
+      </button>
+
     </div>
   </div>
 
@@ -95,6 +100,11 @@
         player.play(); // ensure autoplay
       };
       newWindow.document.head.appendChild(ruffleScript);
+    });
+
+    // Back to Games button functionality
+    document.getElementById("back-to-games").addEventListener("click", function () {
+      window.location.href = "https://groovygamer1000.github.io/matts-fun-site.github.io/games.html";
     });
   </script>
 
