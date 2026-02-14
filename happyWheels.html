@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Wheels</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Global Ruffle config: forceScale to prevent SWF from changing scale, autoplay
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.RufflePlayer.config = {
+      forceScale: "true",
+      scale: "exactFit",  // force the SWF to exactFit regardless of internal scale
+      autoplay: "on",           // automatically start playing
+      quality: "low"
+    };
+  </script>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+</head>
+
+<body>
+
+  <p>
+    <a href="https://groovygamer1000.github.io/matts-fun-site.github.io">Home</a> |
+    <a href="https://groovygamer1000.github.io/matts-fun-site.github.io/games">Games</a> |
+    <a href="https://groovygamer1000.github.io/matts-fun-site.github.io/videos">Videos</a>
+  </p>
+
+  <h1>Happy Wheels</h1>
+
+  <!-- Centered Game Section -->
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <div style="text-align: center;">
+      
+      <!-- Fullscreen Button -->
+      <button id="fullscreen-btn" style="margin-bottom: 10px; padding: 10px 20px; font-weight: bold;">
+        Play in Fullscreen
+      </button>
+
+      <div id="ruffle-container" style="width: 800px; height: 600px;"></div>
+
+      <p style="margin-top: 10px; max-width: 800px; font-weight: bold;">
+        Happy Wheels is a crazy and entertaining physics-based game where you guide unusual characters through dangerous obstacle courses filled with traps.
+        With its over-the-top ragdoll physics and unpredictable challenges. (WARNING: GORE)
+      </p>
+
+      <!-- Back to Games Button -->
+      <button id="back-to-games" style="margin-top: 15px; padding: 10px 20px; font-weight: bold;">
+        Back to Games
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    // Function to create the Ruffle player with forceScale and autoplay
+    function loadRuffle(containerId, swfPath, width = "800px", height = "600px") {
+      const ruffle = window.RufflePlayer?.newest();
+      const player = ruffle.createPlayer();
+      const container = document.getElementById(containerId) || document.body;
+      container.appendChild(player);
+      player.style.width = width;
+      player.style.height = height;
+      player.load(swfPath);
+      player.play(); // ensure autoplay
+    }
+
+    // Load Ruffle on this page
+    window.addEventListener("DOMContentLoaded", function () {
+      loadRuffle("ruffle-container", "assets/angry-birds.swf");
+    });
+
+    // Fullscreen button functionality
+    document.getElementById("fullscreen-btn").addEventListener("click", function () {
+      const newWindow = window.open("", "_blank");
+      newWindow.document.title = "Happy Wheels HD";
+      newWindow.document.body.style.margin = "0";
+      newWindow.document.body.style.display = "flex";
+      newWindow.document.body.style.justifyContent = "center";
+      newWindow.document.body.style.alignItems = "center";
+      newWindow.document.body.style.height = "100vh";
+      newWindow.document.body.style.backgroundColor = "#000";
+
+      // Include Ruffle script
+      const ruffleScript = newWindow.document.createElement("script");
+      ruffleScript.src = "https://unpkg.com/@ruffle-rs/ruffle";
+      ruffleScript.onload = () => {
+        // Apply forceScale and autoplay in the new tab as well
+        newWindow.RufflePlayer = newWindow.RufflePlayer || {};
+        newWindow.RufflePlayer.config = {
+          forceScale: "exactFit",
+          autoplay: "on"
+        };
+
+        const ruffle = newWindow.RufflePlayer?.newest();
+        const player = ruffle.createPlayer();
+        newWindow.document.body.appendChild(player);
+        player.style.width = "100%";
+        player.style.height = "100%";
+        player.load("https://groovygamer1000.github.io/matts-fun-site.github.io/assets/angry-birds.swf");
+        player.play(); // ensure autoplay
+      };
+      newWindow.document.head.appendChild(ruffleScript);
+    });
+
+    // Back to Games button functionality
+    document.getElementById("back-to-games").addEventListener("click", function () {
+      window.location.href = "https://groovygamer1000.github.io/matts-fun-site.github.io/games.html";
+    });
+  </script>
+
+</body>
+</html>
