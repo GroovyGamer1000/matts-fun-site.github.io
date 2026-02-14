@@ -1,5 +1,5 @@
 html, body {
-  height: 100%;             /* Full viewport height */
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -8,5 +8,11 @@ body {
   background: linear-gradient(to bottom, yellow, orange);
   color: black;
   font-family: 'Comic Sans MS';
-  min-height: 100vh;        /* Ensure body is at least full viewport height */
+  min-height: 100vh;
+
+  /* Center everything */
+  display: flex;
+  justify-content: center;  /* Horizontal center */
+  align-items: center;      /* Vertical center */
+  text-align: center;       /* Centers text inside elements */
 }
