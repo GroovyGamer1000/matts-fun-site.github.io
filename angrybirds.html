@@ -4,17 +4,32 @@
   <meta charset="UTF-8">
   <title>Angry Birds</title>
   <link rel="stylesheet" href="style.css">
+
   <script>
-    // Global Ruffle config: forceScale to prevent SWF from changing scale, autoplay
+    // Global Ruffle config
     window.RufflePlayer = window.RufflePlayer || {};
     window.RufflePlayer.config = {
       forceScale: "true",
-      scale: "exactFit",  // force the SWF to exactFit regardless of internal scale
-      autoplay: "on",           // automatically start playing
+      scale: "exactFit",
+      autoplay: "on",
       quality: "low"
     };
   </script>
+
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+  <style>
+    /* Make it properly fill screen in fullscreen mode */
+    #ruffle-container:fullscreen {
+      width: 100vw !important;
+      height: 100vh !important;
+    }
+
+    #ruffle-container:fullscreen ruffle-player {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -51,7 +66,7 @@
   </div>
 
   <script>
-    // Function to create the Ruffle player with forceScale and autoplay
+    // Create and load Ruffle player
     function loadRuffle(containerId, swfPath, width = "800px", height = "600px") {
       const ruffle = window.RufflePlayer?.newest();
       const player = ruffle.createPlayer();
@@ -60,50 +75,28 @@
       player.style.width = width;
       player.style.height = height;
       player.load(swfPath);
-      player.play(); // ensure autoplay
+      player.play();
     }
 
-    // Load Ruffle on this page
     window.addEventListener("DOMContentLoaded", function () {
       loadRuffle("ruffle-container", "assets/angry-birds.swf");
-    });
 
-    // Fullscreen button functionality
-    document.getElementById("fullscreen-btn").addEventListener("click", function () {
-      const newWindow = window.open("", "_blank");
-      newWindow.document.title = "Angry Birds HD";
-      newWindow.document.body.style.margin = "0";
-      newWindow.document.body.style.display = "flex";
-      newWindow.document.body.style.justifyContent = "center";
-      newWindow.document.body.style.alignItems = "center";
-      newWindow.document.body.style.height = "100vh";
-      newWindow.document.body.style.backgroundColor = "#000";
+      const fullscreenBtn = document.getElementById("fullscreen-btn");
+      const ruffleContainer = document.getElementById("ruffle-container");
 
-      // Include Ruffle script
-      const ruffleScript = newWindow.document.createElement("script");
-      ruffleScript.src = "https://unpkg.com/@ruffle-rs/ruffle";
-      ruffleScript.onload = () => {
-        // Apply forceScale and autoplay in the new tab as well
-        newWindow.RufflePlayer = newWindow.RufflePlayer || {};
-        newWindow.RufflePlayer.config = {
-          forceScale: "exactFit",
-          autoplay: "on"
-        };
+      fullscreenBtn.addEventListener("click", function () {
+        if (!document.fullscreenElement) {
+          ruffleContainer.requestFullscreen().catch(err => {
+            alert("Fullscreen error: " + err.message);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      });
 
-        const ruffle = newWindow.RufflePlayer?.newest();
-        const player = ruffle.createPlayer();
-        newWindow.document.body.appendChild(player);
-        player.style.width = "100%";
-        player.style.height = "100%";
-        player.load("https://groovygamer1000.github.io/matts-fun-site.github.io/assets/angry-birds.swf");
-        player.play(); // ensure autoplay
-      };
-      newWindow.document.head.appendChild(ruffleScript);
-    });
-
-    // Back to Games button functionality
-    document.getElementById("back-to-games").addEventListener("click", function () {
-      window.location.href = "https://groovygamer1000.github.io/matts-fun-site.github.io/games.html";
+      document.getElementById("back-to-games").addEventListener("click", function () {
+        window.location.href = "https://groovygamer1000.github.io/matts-fun-site.github.io/games.html";
+      });
     });
   </script>
 
