@@ -2,64 +2,106 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Matt's Videos!</title>
+    <title>Matt's Fun Site!</title>
     <link rel="stylesheet" href="style.css">
+    
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+
+    <style>
+        .page-container {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .main-content {
+            flex: 2;
+        }
+        .sidebar-wrapper {
+            flex: 1;
+        }
+
+        /* 2. Container holding your videos horizontally */
+        .list {
+            display: flex;       /* Places items side-by-side */
+            flex-wrap: wrap;     /* Allows items to wrap dynamically on zoom/resize */
+            gap: 20px;           /* Adds a clean layout gap between players */
+            margin-top: 15px;
+        }
+
+        /* 3. Setting the exact size framework for your advanced video players */
+        .video-wrapper {
+            width: 350px;        /* Dictates the base size of your player */
+            max-width: 100%;     /* Keeps it safe on smaller screen windows */
+        }
+
+        /* 4. THE STRETCH FORCE: Forces the actual video element inside the player to stretch to the box */
+        .video-js .vjs-tech {
+            object-fit: fill !important;
+        }
+    </style>
 </head>
 <body>
-    <p>
-        <a href="https://groovygamer1000.github.io/matts-fun-site.github.io">Home</a> |
-        <a href="https://groovygamer1000.github.io/matts-fun-site.github.io/games">Games</a> |
-        <a href="https://groovygamer1000.github.io/matts-fun-site.github.io/videos">Videos</a>
-    </p>
 
-    <h1>Matt's Videos!</h1>
-    <p>Here, you'll find all your favorite shows, movies, and animations!!</p>
-
-    <div style="display: flex; gap: 20px; max-width: 2000px; margin: 0 auto; justify-content: center; flex-wrap: wrap;">
-    
-      <!-- First video block -->
-      <div style="max-width: 480px; flex: 1 1 480px; text-align: center;">
-        <video controls width="480" height="360" style="object-fit: cover;">
-          <source src="https://archive.org/download/matts-fun-site/A%20tail%2C%20a%20trail.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
-        <p style="margin-top: 8px; font-weight: bold;">Wubbzy S01E01A</p>
-      </div>
-    
-      <!-- Second video block -->
-      <div style="max-width: 480px; flex: 1 1 480px; text-align: center;">
-        <video controls width="480" height="360" style="object-fit: cover;">
-          <source src="https://archive.org/download/matts-fun-site/angry%20birds.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
-        <p style="margin-top: 8px; font-weight: bold;">Matt's Angry Birds Animation Cartoon</p>
-      </div>
-    
-      <!-- Third video block -->
-      <div style="max-width: 480px; flex: 1 1 480px; text-align: center;">
-        <video controls width="480" height="360" style="object-fit: cover;">
-          <source src="https://archive.org/download/matts-fun-site/%F0%9F%90%89%20Pocoyo%27s%20Magical%20Quest%20Taming%20the%20DRAGON%20Pocoyo%20English%20-%20Official%20Channel%20Fantasy%20Cartoons%20%E2%9C%A8%20-%20Pocoyo%20English%20-%20Official%20Channel%20%28720p%2C%20h264%29.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
-        <p style="margin-top: 8px; font-weight: bold;">The Secret Dragon Waits for Pocoyo 😱</p>
-      </div>
-    
-      <!-- Fourth video block -->
-      <div style="max-width: 480px; flex: 1 1 480px; text-align: center;">
-        <video controls width="480" height="360" style="object-fit: cover;">
-          <source src="https://archive.org/download/matts-fun-site/pablito.mov" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
-        <p style="margin-top: 8px; font-weight: bold;">He Invited His Friend Pablo</p>
-      </div>
-    
+    <div class="nav">
+        <span class="navLink"><a href="#">Home</a></span> | 
+        <span class="navLink"><a href="videos.html">Videos</a></span> | 
+        <span class="navLink"><a href="games.html">Games</a></span> | 
+        <span class="navLink"><a href="painting.html">Paint</a></span>
     </div>
 
-
-    
+    <div class="header">
+        <span class="title">Matt's Fun Site!</span>
     </div>
 
+    <div class="subtitle">
+        <p>Videos</p>
+    </div>
+        
+    <div class="list">
+        <div class="video-wrapper">
+            <video 
+                id="my-video-1" 
+                class="video-js vjs-default-skin" 
+                controls 
+                preload="auto" 
+                data-setup='{ "fluid": true, "aspectRatio": "16:9" }'>
+                <source src="https://archive.org/download/zoo-hullabaloo_202407/A%20tail%2C%20a%20trail.mp4" type="video/mp4" />
+            </video>
+        </div>
 
+        <div class="video-wrapper">
+            <video 
+                id="my-video-2" 
+                class="video-js vjs-default-skin" 
+                controls 
+                preload="auto" 
+                data-setup='{ "fluid": true, "aspectRatio": "16:9" }'>
+                <source src="https://udisk6.wcostream.com/getvid?evid=6WEXVY5eTLEFebP6cleAO49YlG58Gvn4CCk-2rD3aYqei5Q7t1OJRN7y2_RwtoPgmZ6znOtjFKBsVNcr4qmtl_5k-R0igS9XdGuucRalW9OnYeDxtiXtEdXmbuMnNoH92SmS0laNim8ucM2UawGTyWOoNyp6hOLOM2BeUoUT8xp9LcdMk_PUUqbgI_2y4JD0Uq8YoLRG8DLrDAcu_24sfXlvnNNvbgMe-H4z4G7WaWMLTNogvxPe6rKtaFj37KhJgFUQjOywWJlMOd9d4-h8pnFTBlZ8ZhOH3leS72uqB5azfhBnSbPLDjnd6cAKA-4EeK3MzL8qMe5mGTv3mF2Ljz9SWw7uayPR3QASv-9kDE&json.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </div>
 
+    <div class="box1">
+        <p>Have fun!</p>
+    </div>
+
+    <div class="footer">
+        ©2026
+    </div>
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.js"></script>
+
+    <script>
+        // Runs automatically to parse internal multiple audio tracks if present inside the files
+        document.querySelectorAll('.video-js').forEach((videoEl) => {
+            const player = videojs(videoEl.id);
+            player.ready(function() {
+                let audioTrackList = player.audioTracks();
+                if(audioTrackList.length > 1) {
+                    player.controlBar.audioTrackToggle.show();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
